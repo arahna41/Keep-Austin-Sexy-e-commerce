@@ -66,7 +66,7 @@ window.onload = function () {
 const dropdownBtn = document.getElementsByClassName("btn_dropdown");
 if (dropdownBtn) {
   for (let i = 0; i < dropdownBtn.length; i++) {
-    dropdownBtn[i].addEventListener("click", function () {
+    dropdownBtn[i].addEventListener("click", () => {
       this.classList.toggle("active");
       const allPanel = document.querySelectorAll(".panel_dropdown");
       const panel = this.nextElementSibling;
@@ -83,42 +83,42 @@ if (dropdownBtn) {
 }
 
 /* style for mobile menu */
-const btnMenu = document.querySelector(".header__mobile_btn");
-const btnCross = document.querySelector(".header__mobile_btn_cross");
-const mobileMenuPanel = document.querySelector(".header__mobile_panel");
+const btnMenu = document.querySelector(".header__mobile_btn"),
+  btnCross = document.querySelector(".header__mobile_btn_cross"),
+  mobileMenuPanel = document.querySelector(".header__mobile_panel");
 if (btnMenu) {
-  btnMenu.addEventListener("click", function () {
+  btnMenu.addEventListener("click", () => {
     mobileMenuPanel.style.right = "0";
   });
 }
 
 if (btnCross) {
-  btnCross.addEventListener("click", function () {
+  btnCross.addEventListener("click", () => {
     mobileMenuPanel.style.right = "100%";
   });
 }
 
 // Style for open/close filters on catalog page
 
-const btnFilter = document.querySelector(".btn_catalog_filters");
-const catalogOverlay = document.querySelector(".catalog_overlay");
-const panelFilter = document.querySelector(".catalog_filters_panel");
-const btnFilterCross = document.querySelector(".btn_catalog_filters_cross");
+const btnFilter = document.querySelector(".btn_catalog_filters"),
+  catalogOverlay = document.querySelector(".catalog_overlay"),
+  panelFilter = document.querySelector(".catalog_filters_panel"),
+  btnFilterCross = document.querySelector(".btn_catalog_filters_cross");
 
 if (btnFilter) {
-  btnFilter.addEventListener("click", function () {
+  btnFilter.addEventListener("click", () => {
     catalogOverlay.classList.add("catalog_overlay_active");
 
     panelFilter.classList.add("catalog_filters_panel_active");
   });
 
-  btnFilterCross.addEventListener("click", function () {
+  btnFilterCross.addEventListener("click", () => {
     catalogOverlay.classList.remove("catalog_overlay_active");
 
     panelFilter.classList.remove("catalog_filters_panel_active");
   });
 
-  document.addEventListener("mousedown", function (e) {
+  document.addEventListener("mousedown", (e) => {
     if (
       e.target.closest(".catalog_filters_panel") === null ||
       e.target.closest(".catalog_overlay") === null
@@ -131,10 +131,10 @@ if (btnFilter) {
 
 // Cart List
 
-const product = document.querySelectorAll(".cart_product");
-const productList = document.querySelector(".product_list");
-const checkoutList = document.querySelector(".checkout_list.shop_table");
-const checkoutProducts = document.querySelectorAll(".checkout_product");
+const product = document.querySelectorAll(".cart_product"),
+  productList = document.querySelector(".product_list"),
+  checkoutList = document.querySelector(".checkout_list.shop_table"),
+  checkoutProducts = document.querySelectorAll(".checkout_product");
 
 if (productList && product.length > 4) {
   productList.classList.add("overflow");
@@ -154,7 +154,7 @@ if (descriptionProduct) {
 const accordionReviews = document.querySelector(".product_page__review_title");
 
 if (accordionReviews) {
-  accordionReviews.addEventListener("click", function () {
+  accordionReviews.addEventListener("click", () => {
     this.classList.toggle("active_reviews");
     const panel = this.nextElementSibling;
     if (panel.style.height) {
@@ -188,7 +188,7 @@ const checkboxShipToDifferentAddress = document.querySelector(
 );
 const shippingFields = document.querySelector(".shipping_address");
 if (checkboxShipToDifferentAddress && shippingFields) {
-  checkboxShipToDifferentAddress.addEventListener("change", function () {
+  checkboxShipToDifferentAddress.addEventListener("change", () => {
     if (this.checked) {
       shippingFields.classList.add("shipping_address_opened");
     } else {
@@ -198,8 +198,8 @@ if (checkboxShipToDifferentAddress && shippingFields) {
 }
 
 // Payment
-const paymentMethods = document.querySelectorAll(".radio_spoller");
-const method = document.querySelector(".radio_spoller");
+const paymentMethods = document.querySelectorAll(".radio_spoller"),
+  method = document.querySelector(".radio_spoller");
 
 // accordion functionality
 paymentMethods.forEach((paymentMethod) => {
@@ -224,13 +224,11 @@ paymentMethods.forEach((paymentMethod) => {
 });
 
 /* search */
-const btnSearch = document.querySelector(".header_search");
-const crossSearch = document.querySelector(".header_panel_cross");
-const searchPanelOverlay = document.querySelector(
-  ".header_search_panel_overlay"
-);
-const searchPanel = document.querySelector(".header_search_panel");
-const inputSearchValue = document.querySelector("#input_search");
+const btnSearch = document.querySelector(".header_search"),
+  crossSearch = document.querySelector(".header_panel_cross"),
+  searchPanelOverlay = document.querySelector(".header_search_panel_overlay");
+const searchPanel = document.querySelector(".header_search_panel"),
+  inputSearchValue = document.querySelector("#input_search");
 const toggleMenu = function () {
   if (searchPanel.classList.contains("header_search_panel_active")) {
     searchPanelOverlay.style.display = "none";
@@ -242,18 +240,18 @@ const toggleMenu = function () {
   }
 };
 if (btnSearch && searchPanel && crossSearch) {
-  btnSearch.addEventListener("click", function (e) {
+  btnSearch.addEventListener("click", (e) => {
     e.stopPropagation();
     toggleMenu();
   });
 
-  crossSearch.addEventListener("click", function (e) {
+  crossSearch.addEventListener("click", (e) => {
     e.stopPropagation();
     toggleMenu();
     searchPanel.querySelector("input").value = null;
   });
 
-  document.addEventListener("click", function (e) {
+  document.addEventListener("click", (e) => {
     const target = e.target;
     const itsSearch = target == searchPanel || searchPanel.contains(target);
     const itsBtnSearch = target == btnMenu;
@@ -266,19 +264,19 @@ if (btnSearch && searchPanel && crossSearch) {
 }
 
 /* gift card */
-const btnGiftCard = document.querySelector(".sertificates__gift");
-const giftCardPanel = document.querySelector(".gift_card_panel");
-const contentGiftCard = document.querySelector(".gift_card_content");
+const btnGiftCard = document.querySelector(".sertificates__gift"),
+  giftCardPanel = document.querySelector(".gift_card_panel"),
+  contentGiftCard = document.querySelector(".gift_card_content");
 
 if (btnGiftCard && giftCardPanel) {
-  btnGiftCard.addEventListener("click", function () {
+  btnGiftCard.addEventListener("click", () => {
     giftCardPanel.style.display = "grid";
   });
 }
 
 const crossGiftCard = document.querySelector(".gift_cadr_cross");
 if (crossGiftCard && giftCardPanel) {
-  crossGiftCard.addEventListener("click", function () {
+  crossGiftCard.addEventListener("click", () => {
     giftCardPanel.style.display = "none";
     imageBlocksGiftCard.forEach(function (imageBlock) {
       imageBlock.nextElementSibling.classList.remove(
@@ -286,7 +284,7 @@ if (crossGiftCard && giftCardPanel) {
       );
     });
   });
-  document.addEventListener("mousedown", function (e) {
+  document.addEventListener("mousedown", (e) => {
     if (
       e.target.closest(".gift_card_content") === null ||
       e.target.closest(".gift_card_panel") === null
@@ -301,11 +299,11 @@ if (crossGiftCard && giftCardPanel) {
   });
 }
 
-const imageBlocksGiftCard = document.querySelectorAll(".gift_card__images");
-const descGiftCards = document.querySelectorAll(".gift_card__description");
+const imageBlocksGiftCard = document.querySelectorAll(".gift_card__images"),
+  descGiftCards = document.querySelectorAll(".gift_card__description");
 if (imageBlocksGiftCard && descGiftCards) {
   imageBlocksGiftCard.forEach(function (imageBlock) {
-    imageBlock.addEventListener("click", function () {
+    imageBlock.addEventListener("click", () => {
       descGiftCards.forEach((item) => {
         item.classList.remove("gift_card__description_active");
       });
@@ -317,7 +315,7 @@ if (imageBlocksGiftCard && descGiftCards) {
 const crossGiftCadrDesc = document.querySelectorAll(".gift_card_desc__cross");
 if (crossGiftCadrDesc) {
   crossGiftCadrDesc.forEach((cross) => {
-    cross.addEventListener("click", function () {
+    cross.addEventListener("click", () => {
       cross.parentElement.classList.remove("gift_card__description_active");
     });
   });
